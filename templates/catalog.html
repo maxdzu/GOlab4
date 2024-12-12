@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товарів</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="/">Каталог</a>
+        </div>
+        <div class="nav-right">
+            <a href="/cart" class="cart-link">Кошик (<span id="cart-count">{{len .Cart}}</span>)</a>
+            <a href="/add-product" class="nav-button">Додати товар</a>
+        </div>
+    </nav>
+    
+
+    <main>
+        <h1>Каталог товарів</h1>
+        <div class="product-grid">
+            {{range .Catalog}}
+            <div class="product-card">
+                <h3>{{.Name}}</h3>
+                <p>Ціна: {{.Price}} грн.</p>
+                <div class="card-actions">
+                    <a href="/add-to-cart?id={{.ID}}" class="add-to-cart-button">Добавить в корзину</a>
+                    <form action="/delete-product" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="{{.ID}}">
+                        <button type="submit" class="delete-button">Удалить</button>
+                    </form>
+                </div>                
+            </div>
+            {{end}}
+        </div>
+    </main>
+</body>
+</html>

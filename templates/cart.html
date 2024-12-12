@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошик</title>
+    <link rel="stylesheet" href="/static/cart_styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="/">Каталог</a>
+        </div>
+        <div class="nav-right">
+            <a href="/cart" class="cart-link">Кошик (<span id="cart-count">{{len .}}</span>)</a>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Кошик</h1>
+        <div class="cart-items">
+            {{if .}}
+                {{range .}}
+                <div class="cart-item">
+                    <span>{{.Name}}</span>
+                    <span>{{.Price}} грн.</span>
+                    <a href="/delete-from-cart?id={{.ID}}" class="button delete">Видалити</a>
+                </div>
+                {{end}}
+            {{else}}
+                <p>Кошик порожній.</p>
+            {{end}}
+        </div>
+        <div class="cart-actions">
+            <a href="/" class="button back">Повернутись до каталогу</a>
+            {{if .}}
+            <form action="/checkout" method="post" class="checkout-form">
+                <button type="submit" class="button checkout">Сплатити</button>
+            </form>
+            {{end}}
+        </div>
+    </main>
+</body>
+</html>

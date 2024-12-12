@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видалення товару</title>
+</head>
+<body>
+    <h1>Видалити товар</h1>
+    <form action="/delete-product-submit" method="post">
+        <label for="id">Виберіть товар:</label>
+        <select id="id" name="id" required>
+            {{range .}}
+            <option value="{{.ID}}">{{.Name}} ({{.Price}} руб.)</option>
+            {{end}}
+        </select>
+        <button type="submit">Видалити</button>
+    </form>
+    <a href="/">Повернутись до каталогу</a>
+</body>
+</html>

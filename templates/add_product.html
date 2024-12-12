@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Додавання товару</title>
+    <link rel="stylesheet" href="/static/add_product_styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="/">Каталог</a>
+        </div>
+        <div class="nav-right">
+            <a href="/cart" class="cart-link">Кошик (<span id="cart-count">0</span>)</a>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Додати новий товар</h1>
+        <form action="/add-product-submit" method="post" class="form-container">
+            <div class="form-group">
+                <label for="name">Назва:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Ціна:</label>
+                <input type="text" id="price" name="price" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="button add">Додати</button>
+                <a href="/" class="button back">Повернутись до каталогу</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
